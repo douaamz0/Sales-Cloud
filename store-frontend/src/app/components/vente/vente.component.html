@@ -1,0 +1,29 @@
+<div class="container">
+  <h2>Sales</h2>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Product</th>
+      <th>Quantity</th>
+      <th>Date</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let vente of ventes">
+      <td>{{ vente.id }}</td>
+      <td>{{ vente.produit.nom }}</td>
+      <td>{{ vente.quantite }}</td>
+      <td>{{ vente.date | date }}</td>
+      <td>
+        <button (click)="editVente(vente.id)" class="btn btn-primary">Edit</button>
+		     <button (click)="deleteVente(vente.id)" class="btn btn-danger">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <!-- Button to add a new sale -->
+  <button class="btn btn-success" (click)="createVente()">Add New Sale</button>
+</div>
