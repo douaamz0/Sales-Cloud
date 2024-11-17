@@ -8,7 +8,7 @@ import { Client } from '../models/client';
 })
 export class ClientService {
 
-  private baseUrl = 'http://localhost:8097/api/clients'; // Your Spring Boot API base URL
+  private baseUrl = 'http://localhost:8085/StoreBackend/api/clients'; // Your Spring Boot API base URL
 
   constructor(private http: HttpClient) { }
 

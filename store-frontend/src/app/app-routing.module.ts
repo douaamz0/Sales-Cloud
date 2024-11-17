@@ -6,20 +6,25 @@ import { ClientEditComponent } from './components/client-edit/client-edit.compon
 import {LoginComponent} from "./components/login/login.component";
 import {RegisterComponent} from "./components/register/register.component";
 import {AuthGuard} from "./guards/auth.guard";
-import {VenteFormComponent} from "./components/add-edit-vente/add-edit-vente.component";
+import {AddEditVenteComponent} from "./components/add-edit-vente/add-edit-vente.component";
 import {VenteComponent} from "./components/vente/vente.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'register', component: RegisterComponent },
-  { path: 'clients', component: ClientListComponent, canActivate: [AuthGuard] },
+  { path: 'clients', component: ClientListComponent, canActivate: [AuthGuard]},
   { path: 'add-client', component: ClientAddComponent, canActivate: [AuthGuard] },
   { path: 'edit-client/:id', component: ClientEditComponent, canActivate: [AuthGuard] },
-  { path: '', redirectTo: '/login', pathMatch: 'full' }, // Default route
+
+
+
+
+   // Default route
   { path: '**', redirectTo: '/login' }, // Wildcard route
   { path: 'ventes', component: VenteComponent, canActivate: [AuthGuard] },
-  { path: 'ventes/new', component: VenteFormComponent, canActivate: [AuthGuard] },
-  { path: 'ventes/edit/:id', component: VenteFormComponent, canActivate: [AuthGuard] },
+  { path: 'ventes/new', component: AddEditVenteComponent, canActivate: [AuthGuard] },
+  { path: 'ventes/edit/:id', component: AddEditVenteComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '/ventes', pathMatch: 'full' }
 ];
 

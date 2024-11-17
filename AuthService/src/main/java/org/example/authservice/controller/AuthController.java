@@ -12,7 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder; // Interfac
 import org.springframework.web.bind.annotation.*; // Contains annotations for RESTful web services
 
 
-@CrossOrigin(origins = "http://localhost:4200") // Allows requests from specified origin
+
 @RestController // Indicates that this class is a REST controller
 @RequestMapping("/auth") // Maps all requests under /auth to this controller
 public class AuthController {

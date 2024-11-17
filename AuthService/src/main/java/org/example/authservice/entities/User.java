@@ -1,12 +1,14 @@
 package org.example.authservice.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 
 import java.util.Collection;
 
 @Entity
 @Table(name = "users") // Optional: specify the table name if needed
+@AllArgsConstructor
 public class User {
 
     @Id

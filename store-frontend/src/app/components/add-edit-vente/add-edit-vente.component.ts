@@ -10,7 +10,7 @@ import {ProduitService} from "../../services/produit.service";
   templateUrl: './add-edit-vente.component.html',
   styleUrls: ['./add-edit-vente.component.css']
 })
-export class VenteFormComponent implements OnInit {
+export class AddEditVenteComponent implements OnInit {
 
  public  vente: Vente = new Vente(); // The sale being created/edited
  public produits: any[] = []; // List of products for selection in the form

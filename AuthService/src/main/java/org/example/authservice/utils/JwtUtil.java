@@ -1,5 +1,5 @@
 package org.example.authservice.utils;
-
+// Import necessary classes from the JWT library and Java utilities.
 import io.jsonwebtoken.*;
 import org.springframework.stereotype.Component;
 import io.jsonwebtoken.Claims;
@@ -69,4 +69,3 @@ public class JwtUtil {
         return extractAllClaims(token).getExpiration().before(new Date());
     }
 }
-
