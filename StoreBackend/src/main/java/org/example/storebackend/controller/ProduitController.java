@@ -25,22 +25,14 @@ import org.springframework.web.bind.annotation.RestController;
 /*Création du controller de type RestController*/
 @RestController
 /*la route principale pour consommer l'api du controlleur*/
-@RequestMapping("api/produits/")
+@RequestMapping("StoreBackend/api/produits/")
 public class ProduitController {
     /*le repository de l'entité produit pour gérer les transaction dans la base de données*/
     @Autowired
     private ProduitRepository produitRepository;
 
 
-    /*@RequestBody :permet de récupéer un objet json puis le convertir à un objet de type produit
-    {
-      "id":"5",
-      "nom":"TV",
-      "marque":"Sumsung",
-      "prix":1000,
-      "qteStock":5
-      }
-  */
+
     @PostMapping("/add")
     public ResponseEntity ajouter(@RequestBody Produit produit) {
         try {

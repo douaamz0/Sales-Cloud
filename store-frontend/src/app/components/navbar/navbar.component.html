@@ -1,0 +1,27 @@
+<mat-toolbar class="custom-toolbar">
+  <span class="col-md-6">
+    <span class="site-name">Sales Management</span>
+  </span>
+  <span style="flex: auto"></span>
+
+  <!-- Bouton "Accueil" -->
+  <button mat-button routerLink="/clients" class="nav-button">Client</button>
+
+  <!-- Bouton "Genres" -->
+  <button mat-button routerLink="/produits" class="nav-button">Produits</button>
+  <button mat-button routerLink="/produits" class="nav-button">Ventes</button>
+
+  <!-- Afficher l'icône du profil si l'utilisateur est authentifié -->
+  <ng-container *ngIf="isAuthenticated(); else loginButton">
+
+
+
+    <button  (click)="logout()"><mat-icon>logout</mat-icon></button>
+
+  </ng-container>
+
+  <!-- Template pour le bouton "s'identifier" -->
+  <ng-template #loginButton>
+    <button mat-button (click)="identifier()" class="nav-button">S'identifier</button>
+  </ng-template>
+</mat-toolbar>

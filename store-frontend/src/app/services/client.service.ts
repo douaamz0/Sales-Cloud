@@ -8,13 +8,13 @@ import { Client } from '../models/client';
 })
 export class ClientService {
 
-  private baseUrl = 'http://localhost:8085/StoreBackend/api/clients'; // Your Spring Boot API base URL
+  private baseUrl = 'http://localhost:8085/SalesManagement/api/ventes/clients'; // Your Spring Boot API base URL
 
   constructor(private http: HttpClient) { }
 
   // Fetch all clients
   getClients(): Observable<any> {
-    return this.http.get(this.baseUrl);
+    return this.http.get(this.baseUrl+"/getClients");
   }
 
   // Fetch a single client by ID
@@ -24,7 +24,7 @@ export class ClientService {
 
   // Create a new client
   createClient(client: Client): Observable<any> {
-    return this.http.post(this.baseUrl, client);
+    return this.http.post(this.baseUrl+"/create", client);
   }
 
   // Update a client

@@ -6,13 +6,22 @@ import { AppComponent } from './app.component';
 import { ClientListComponent } from './components/client-list/client-list.component';
 import { ClientAddComponent } from './components/client-add/client-add.component';
 import { ClientEditComponent } from './components/client-edit/client-edit.component';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { VenteComponent } from './components/vente/vente.component';
 import { AddEditVenteComponent } from './components/add-edit-vente/add-edit-vente.component';
-
+import { NavbarComponent } from './components/navbar/navbar.component';
+import {MatListModule} from "@angular/material/list";
+import {MatIconModule} from "@angular/material/icon";
+import {MatButtonModule} from "@angular/material/button";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatMenuModule} from "@angular/material/menu";
+import {MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardModule} from "@angular/material/card";
+import {MatFormField, MatFormFieldModule} from "@angular/material/form-field";
+import {MatInput} from "@angular/material/input";
+import {MatToolbarModule} from "@angular/material/toolbar";
 
 
 @NgModule({
@@ -24,11 +33,24 @@ import { AddEditVenteComponent } from './components/add-edit-vente/add-edit-vent
     RegisterComponent,
     LoginComponent,
     VenteComponent,
-    AddEditVenteComponent
+    AddEditVenteComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    MatToolbarModule,
+    MatListModule,
+    MatIconModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatSidenavModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatCardActions,
+    MatInput,
+    ReactiveFormsModule,
     HttpClientModule,
     FormsModule
   ],
