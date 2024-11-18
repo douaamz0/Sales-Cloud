@@ -1,7 +1,8 @@
+<app-navbar></app-navbar>
 <div class="client-list-card">
-    <h2>Client List</h2>
-    <a routerLink="/add-client">Add Client</a>
-    
+    <h2>Liste des Clients</h2>
+    <a routerLink="/add-client">Ajouter un client</a>
+
     <table class="client-table">
       <thead>
         <tr>
@@ -9,7 +10,6 @@
           <th>Prénom</th>
           <th>Téléphone</th>
           <th>Email</th>
-          <th>Password</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -19,10 +19,15 @@
           <td>{{ client.prenom }}</td>
           <td>{{ client.tel }}</td>
           <td>{{ client.email }}</td>
-          <td>{{ client.password }}</td>
           <td>
-            <a [routerLink]="['/edit-client', client.id]">Edit</a>
-            <button (click)="deleteClient(client.id)">Delete</button>
+            <button (click)="editClient(client.id)" class="btn btn-success me-2">
+              <i class="bi bi-pen"></i>
+            </button>
+
+          <button (click)="deleteClient(client.id)" class="btn btn-danger">
+            <i class="bi bi-trash"></i>
+          </button>
+
           </td>
         </tr>
       </tbody>

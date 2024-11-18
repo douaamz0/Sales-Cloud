@@ -1,0 +1,24 @@
+<app-navbar></app-navbar>
+<div>
+  <form (ngSubmit)=" updateClient()">
+    <div>
+      <label for="nom">Nom:</label>
+      <input type="text" id="nom" [(ngModel)]="produit.nom" name="nom" required />
+    </div>
+    <div>
+      <label for="marque">Marque:</label>
+      <input type="text" id="marque" [(ngModel)]="produit.marque" name="marque" required />
+    </div>
+    <div>
+      <label for="prix">Prix:</label>
+      <input type="number" id="prix" [(ngModel)]="produit.prix" name="prix" required />
+    </div>
+    <div>
+      <label for="stock">Quantité en stock:</label>
+      <input type="number" id="stock" [(ngModel)]="produit.qteStock" name="qteStock" required />
+    </div>
+
+    <button type="submit">{{ produit.id ? 'Update' : 'Add' }}</button>
+  </form>
+</div>
+

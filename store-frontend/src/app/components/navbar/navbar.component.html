@@ -5,18 +5,18 @@
   <span style="flex: auto"></span>
 
   <!-- Bouton "Accueil" -->
-  <button mat-button routerLink="/clients" class="nav-button">Client</button>
+  <button mat-button routerLink="/clients" class="nav-button">Clients</button>
 
   <!-- Bouton "Genres" -->
   <button mat-button routerLink="/produits" class="nav-button">Produits</button>
-  <button mat-button routerLink="/produits" class="nav-button">Ventes</button>
+  <button mat-button routerLink="/ventes" class="nav-button">Ventes</button>
 
   <!-- Afficher l'icône du profil si l'utilisateur est authentifié -->
   <ng-container *ngIf="isAuthenticated(); else loginButton">
 
 
 
-    <button  (click)="logout()"><mat-icon>logout</mat-icon></button>
+   <mat-icon (click)="logout()">logout</mat-icon>
 
   </ng-container>
 

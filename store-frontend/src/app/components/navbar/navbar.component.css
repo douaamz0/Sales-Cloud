@@ -1,0 +1,68 @@
+/* Styles globaux pour la barre de navigation */
+.custom-toolbar {
+  background-color: #0056b3; /* Bleu foncé pour le fond */
+  color: #ffffff; /* Couleur blanche pour le texte */
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Nom du site */
+.site-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+/* Boutons de navigation */
+.nav-button {
+  color: #ffffff; /* Texte blanc */
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0 10px;
+  border: none;
+  background: transparent;
+  text-transform: uppercase;
+  transition: background-color 0.3s, color 0.3s;
+  border-radius: 5px;
+}
+
+/* Effet au survol des boutons */
+.nav-button:hover {
+  background-color: #004494; /* Bleu légèrement plus foncé */
+  color: #e3f2fd; /* Bleu clair pour le texte */
+}
+
+/* Bouton de déconnexion */
+mat-icon {
+  color: #ffffff; /* Icône blanche */
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+mat-icon:hover {
+  color: #e3f2fd; /* Icône bleu clair */
+}
+
+/* Bouton "S'identifier" */
+.ng-template .nav-button {
+  font-style: italic;
+}
+
+/* Adaptabilité pour les petits écrans */
+@media (max-width: 768px) {
+  .custom-toolbar {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .site-name {
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  .nav-button {
+    margin: 5px 0;
+  }
+}

@@ -1,6 +1,7 @@
 package org.example.salesmanagement.controllers;
 
-import org.example.salesmanagement.entity.Client;
+
+import org.example.salesmanagement.entity.Produit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -15,37 +16,37 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 @RestController
-@RequestMapping("SalesManagement/api/ventes/clients")
-public class ClientController {
+@RequestMapping("SalesManagement/api/ventes/produits")
+public class ProduitController {
+
     @Autowired
     private DiscoveryClient discoveryClient;
 
     private final RestTemplate restTemplate = new RestTemplate();
 
-    @GetMapping("/getClients")
-    public String getClients() {
+    @GetMapping("/getProduits")
+    public String getProduits() {
         List<ServiceInstance> instances = discoveryClient.getInstances("StoreBackend");
         if (instances != null && !instances.isEmpty()) {
-            String clientAUrl = instances.get(0).getUri().toString() + "/StoreBackend/api/clients";
+            String clientAUrl = instances.get(0).getUri().toString() + "/StoreBackend/api/produits/";
             return restTemplate.getForObject(clientAUrl, String.class);
         }
         return "Client A not available";
     }
-    @GetMapping("/getClients/{id}")
-    public ResponseEntity<?> getClient(@PathVariable long id) {
+    @GetMapping("/getProduits/{id}")
+    public ResponseEntity<?> getProduit(@PathVariable int id) {
         // Récupération des instances du service StoreBackend
         List<ServiceInstance> instances = discoveryClient.getInstances("StoreBackend");
 
         if (instances != null && !instances.isEmpty()) {
             // Construction de l'URL du service StoreBackend
-            String clientAUrl = instances.get(0).getUri().toString() + "/StoreBackend/api/clients/" + id;
+            String clientAUrl = instances.get(0).getUri().toString() + "/StoreBackend/api/produits/" + id;
 
             try {
                 // Appel du service StoreBackend pour récupérer le client
-                Client client = restTemplate.getForObject(clientAUrl, Client.class);
-                return ResponseEntity.ok(client);
+                Produit produit = restTemplate.getForObject(clientAUrl, Produit.class);
+                return ResponseEntity.ok(produit);
             } catch (HttpClientErrorException | HttpServerErrorException ex) {
                 // Gestion des erreurs retournées par l'API distante
                 return ResponseEntity.status(ex.getStatusCode())
@@ -63,20 +64,20 @@ public class ClientController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<?> createClient(@RequestBody Client client) {
+    public ResponseEntity<?> createProduit(@RequestBody Produit produit) {
         // Récupération des instances du service StoreBackend
         List<ServiceInstance> instances = discoveryClient.getInstances("StoreBackend");
 
         if (instances != null && !instances.isEmpty()) {
             // Construction de l'URL du service StoreBackend pour l'appel POST
-            String clientAUrl = instances.get(0).getUri().toString() + "/StoreBackend/api/clients";
+            String clientAUrl = instances.get(0).getUri().toString() + "/StoreBackend/api/produits/add";
 
             // Utilisation de RestTemplate pour envoyer les données avec POST
             // On attend une réponse de type Client (ou toute autre classe de réponse que vous attendez)
-            Client savedClient = restTemplate.postForObject(clientAUrl, client, Client.class);
+            Produit savedProduit = restTemplate.postForObject(clientAUrl, produit, Produit.class);
 
             // Retourner l'objet créé avec le statut HTTP 200
-            return ResponseEntity.ok(savedClient);
+            return ResponseEntity.ok(savedProduit);
         }
 
         // Retourner une erreur 503 (Service Unavailable) si StoreBackend n'est pas disponible
@@ -84,16 +85,16 @@ public class ClientController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateClient(@PathVariable Long id, @RequestBody Client client) {
-        client.setId(id);
+    public ResponseEntity<?> updateProduit(@PathVariable int id, @RequestBody Produit produit) {
+        produit.setId(id);
 
         List<ServiceInstance> instances = discoveryClient.getInstances("StoreBackend");
 
         if (instances != null && !instances.isEmpty()) {
-            String clientAUrl = instances.get(0).getUri().toString() + "/StoreBackend/api/clients/" + id;
+            String clientAUrl = instances.get(0).getUri().toString() + "/StoreBackend/api/produits/" + id;
 
             try {
-                restTemplate.put(clientAUrl, client);
+                restTemplate.put(clientAUrl, produit);
 
                 // Retourner une réponse JSON
                 Map<String, String> response = new HashMap<>();
@@ -114,13 +115,13 @@ public class ClientController {
 
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteClient(@PathVariable Long id) {
+    public ResponseEntity<?> deleteProduit(@PathVariable int id) {
         // Récupération des instances du service StoreBackend
         List<ServiceInstance> instances = discoveryClient.getInstances("StoreBackend");
 
         if (instances != null && !instances.isEmpty()) {
             // Construction de l'URL du service StoreBackend pour l'appel DELETE
-            String clientAUrl = instances.get(0).getUri().toString() + "/StoreBackend/api/clients/" + id;
+            String clientAUrl = instances.get(0).getUri().toString() + "/StoreBackend/api/produits/" + id;
 
             try {
                 // Utilisation de RestTemplate pour envoyer la requête DELETE

@@ -9,15 +9,21 @@ import {AuthGuard} from "./guards/auth.guard";
 import {AddEditVenteComponent} from "./components/add-edit-vente/add-edit-vente.component";
 import {VenteComponent} from "./components/vente/vente.component";
 import {NavbarComponent} from "./components/navbar/navbar.component";
+import {ProduitComponent} from "./components/produit/produit.component";
+import {EditProduitComponent} from "./components/edit-produit/edit-produit.component";
+import {AddProduitComponent} from "./components/add-produit/add-produit.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'register', component: RegisterComponent },
   { path: 'navbar', component: NavbarComponent, canActivate: [AuthGuard]},
-  { path: 'clients', component: ClientListComponent,canActivate: [AuthGuard]},
-  { path: 'add-client', component: ClientAddComponent },
-  { path: 'edit-client/:id', component: ClientEditComponent },
+  { path: 'clients', component: ClientListComponent , canActivate: [AuthGuard]},
+  { path: 'add-client', component: ClientAddComponent, canActivate: [AuthGuard] },
+  { path: 'edit-client/:id', component: ClientEditComponent, canActivate: [AuthGuard] },
+  { path: 'produits', component: ProduitComponent, canActivate: [AuthGuard] },
+  { path: 'edit-produit/:id', component: EditProduitComponent, canActivate: [AuthGuard] },
+  { path: 'add-produit', component: AddProduitComponent, canActivate: [AuthGuard] },
 
 ];
 

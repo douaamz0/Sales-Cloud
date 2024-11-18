@@ -19,7 +19,7 @@ export class ClientService {
 
   // Fetch a single client by ID
   getClient(id: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}/${id}`);
+    return this.http.get(`${this.baseUrl}/getClients/${id}`);
   }
 
   // Create a new client

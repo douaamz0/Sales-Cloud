@@ -1,0 +1,26 @@
+<app-navbar></app-navbar>
+<div class="card col-lg-4 align-bottom">
+  <div class="card-header">Ajout d'un produit</div>
+  <div class="card-body align-content-center">
+  <form (ngSubmit)="addClient()" >
+    <div>
+      <label class="form-label" for="nom">Nom:</label>
+      <input  type="text" id="nom" [(ngModel)]="produit.nom" name="nom" required />
+    </div>
+    <div>
+      <label class="form-label" for="marque">Marque:</label>
+      <input type="text" id="marque" [(ngModel)]="produit.marque" name="marque" required />
+    </div>
+    <div>
+      <label class="form-label" for="prix">Prix:</label>
+      <input type="number" id="prix" [(ngModel)]="produit.prix" name="prix" required />
+    </div>
+    <div>
+      <label class="form-label" for="stock">Quantité en stock:</label>
+      <input type="number" id="stock" [(ngModel)]="produit.qteStock" name="qteStock" required />
+    </div>
+
+    <button  class="btn btn-primary" type="submit">{{ produit.id ? 'modifier' : 'Ajouter' }}</button>
+  </form>
+    </div>
+</div>

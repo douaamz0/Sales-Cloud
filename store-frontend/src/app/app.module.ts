@@ -22,6 +22,9 @@ import {MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardModule} f
 import {MatFormField, MatFormFieldModule} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {MatToolbarModule} from "@angular/material/toolbar";
+import { ProduitComponent } from './components/produit/produit.component';
+import { AddProduitComponent } from './components/add-produit/add-produit.component';
+import { EditProduitComponent } from './components/edit-produit/edit-produit.component';
 
 
 @NgModule({
@@ -34,7 +37,10 @@ import {MatToolbarModule} from "@angular/material/toolbar";
     LoginComponent,
     VenteComponent,
     AddEditVenteComponent,
-    NavbarComponent
+    NavbarComponent,
+    ProduitComponent,
+    AddProduitComponent,
+    EditProduitComponent
   ],
   imports: [
     BrowserModule,
