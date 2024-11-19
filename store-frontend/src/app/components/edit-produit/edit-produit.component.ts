@@ -18,7 +18,7 @@ export class EditProduitComponent implements OnInit {
     private router: Router
   ) {}
 
-  updateClient() {
+  updateProduit() {
     const id = this.route.snapshot.params['id'];
     this.produitService.updateProduit(id, this.produit).subscribe(() => {
       this.router.navigateByUrl("/produits");

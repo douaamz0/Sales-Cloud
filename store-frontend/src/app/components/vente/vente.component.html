@@ -1,29 +1,38 @@
-<div class="container">
-  <h2>Sales</h2>
-  <table class="table">
+<app-navbar></app-navbar>
+<div class="client-list-card">
+  <h2>Liste des Ventes</h2>
+  <button class="btn btn-primary" routerLink="/ventes-add">Ajouter une vente</button>
+
+  <table class="client-table">
     <thead>
     <tr>
       <th>ID</th>
-      <th>Product</th>
-      <th>Quantity</th>
+      <th>Client</th>
+      <th>Produit</th>
       <th>Date</th>
-      <th>Actions</th>
+      <th>Quantité</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let vente of ventes">
       <td>{{ vente.id }}</td>
-      <td>{{ vente.produit.nom }}</td>
+      <td>{{ vente.client.nom}}</td>
+      <td>{{ vente.produit.id}}</td>
+      <td>{{ vente.date }}</td>
       <td>{{ vente.quantite }}</td>
-      <td>{{ vente.date | date }}</td>
       <td>
-        <button (click)="editVente(vente.id)" class="btn btn-primary">Edit</button>
-		     <button (click)="deleteVente(vente.id)" class="btn btn-danger">Delete</button>
+        <button (click)="editVente(vente.id)" class="btn btn-success me-2">
+          <i class="bi bi-pen"></i>
+        </button>
+
+        <button (click)="deleteVente(vente.id)" class="btn btn-danger">
+          <i class="bi bi-trash"></i>
+        </button>
+
       </td>
     </tr>
     </tbody>
   </table>
-
-  <!-- Button to add a new sale -->
-  <button class="btn btn-success" (click)="createVente()">Add New Sale</button>
 </div>
+
+

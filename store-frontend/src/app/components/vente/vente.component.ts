@@ -44,11 +44,9 @@ export class VenteComponent implements OnInit {
 
   // Redirect to add-edit-vente for editing
   editVente(id: number) {
-    this.router.navigate(['/add-edit-vente', id]); // Pass the sale ID as a route parameter
+    this.router.navigateByUrl('vente-edit/'+id); // Pass the sale ID as a route parameter
   }
 
   // Redirect to add-edit-vente for creating a new sale
-  createVente() {
-    this.router.navigate(['/add-edit-vente']); // No ID is passed for creating a new sale
-  }
+
 }

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { VenteService } from '../../services/vente.service';
+import { ProduitService } from '../../services/produit.service';
+import { ClientService } from '../../services/client.service';
 import { Vente } from '../../models/vente';
 import { Router, ActivatedRoute } from '@angular/router';
-import {ProduitService} from "../../services/produit.service";
-
 
 @Component({
   selector: 'app-vente-form',
@@ -11,22 +11,23 @@ import {ProduitService} from "../../services/produit.service";
   styleUrls: ['./add-edit-vente.component.css']
 })
 export class AddEditVenteComponent implements OnInit {
-
- public  vente: Vente = new Vente(); // The sale being created/edited
- public produits: any[] = []; // List of products for selection in the form
- public editMode: boolean = false; // Flag to distinguish between add and edit modes
+  public vente: Vente = new Vente(); // The sale being created/edited
+  public produits: any[] = []; // List of products for selection in the form
+  public clients: any[] = []; // List of clients for selection in the form
+  public editMode: boolean = false; // Flag to distinguish between add and edit mode
 
   constructor(
     private venteService: VenteService,
     private produitService: ProduitService,
-    protected router: Router,
+    private clientService: ClientService,
+    public router: Router,
     private route: ActivatedRoute
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.loadProduits(); // Load available products for the sale form
+    this.loadClients(); // Load available clients for the sale form
 
-    // Check if we're in edit mode (if there's an ID in the route params)
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.editMode = true;
@@ -41,7 +42,6 @@ export class AddEditVenteComponent implements OnInit {
     }
   }
 
-  // Load available products to populate the dropdown
   loadProduits() {
     this.produitService.getProduits().subscribe(
       (data: any[]) => {
@@ -53,25 +53,32 @@ export class AddEditVenteComponent implements OnInit {
     );
   }
 
-  // Save the sale (either creating or updating)
+  loadClients() {
+    this.clientService.getClients().subscribe(
+      (data: any[]) => {
+        this.clients = data;
+      },
+      error => {
+        console.error('Error loading clients', error);
+      }
+    );
+  }
+
   saveVente() {
     if (this.editMode) {
       this.venteService.updateVente(this.vente.id, this.vente).subscribe(
-        () => {
-          this.router.navigate(['/ventes']); // Redirect to sales list after successful save
-        },
-        error => {
-          console.error('Error updating sale', error);
-        }
+        () => this.router.navigate(['/ventes']),
+        error => console.error('Error updating sale', error)
       );
     } else {
-      this.venteService.createVente(this.vente).subscribe(
-        () => {
-          this.router.navigate(['/ventes']); // Redirect to sales list after successful save
-        },
-        error => {
-          console.error('Error creating sale', error);
-        }
+      const venteRequest = {
+        vente: this.vente,
+        client: this.vente.client,
+      };
+
+      this.venteService.createVente(venteRequest).subscribe(
+        () => this.router.navigate(['/ventes']),
+        error => console.error('Error creating sale', error)
       );
     }
   }

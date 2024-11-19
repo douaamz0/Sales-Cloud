@@ -1,26 +1,68 @@
 <app-navbar></app-navbar>
-<div class="card col-lg-4 align-bottom">
-  <div class="card-header">Ajout d'un produit</div>
-  <div class="card-body align-content-center">
-  <form (ngSubmit)="addClient()" >
-    <div>
-      <label class="form-label" for="nom">Nom:</label>
-      <input  type="text" id="nom" [(ngModel)]="produit.nom" name="nom" required />
+<div class="container mt-5">
+  <div class="card mx-auto" style="max-width: 500px;">
+    <div class="card-header bg-primary text-white text-center">
+      <h4>{{ produit.id ? 'Modifier le produit' : 'Ajouter un produit' }}</h4>
     </div>
-    <div>
-      <label class="form-label" for="marque">Marque:</label>
-      <input type="text" id="marque" [(ngModel)]="produit.marque" name="marque" required />
+    <div class="card-body">
+      <form (ngSubmit)="addClient()">
+        <!-- Nom -->
+        <div class="mb-3">
+          <label for="nom" class="form-label">Nom:</label>
+          <input
+            type="text"
+            id="nom"
+            class="form-control"
+            [(ngModel)]="produit.nom"
+            name="nom"
+            required
+            placeholder="Nom du produit"
+          />
+        </div>
+        <!-- Marque -->
+        <div class="mb-3">
+          <label for="marque" class="form-label">Marque:</label>
+          <input
+            type="text"
+            id="marque"
+            class="form-control"
+            [(ngModel)]="produit.marque"
+            name="marque"
+            required
+            placeholder="Marque du produit"
+          />
+        </div>
+        <!-- Prix -->
+        <div class="mb-3">
+          <label for="prix" class="form-label">Prix:</label>
+          <input
+            type="number"
+            id="prix"
+            class="form-control"
+            [(ngModel)]="produit.prix"
+            name="prix"
+            required
+            placeholder="Prix du produit"
+          />
+        </div>
+        <!-- Quantité en stock -->
+        <div class="mb-3">
+          <label for="stock" class="form-label">Quantité en stock:</label>
+          <input
+            type="number"
+            id="stock"
+            class="form-control"
+            [(ngModel)]="produit.qteStock"
+            name="qteStock"
+            required
+            placeholder="Quantité disponible"
+          />
+        </div>
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary w-100">
+          {{ produit.id ? 'Modifier' : 'Ajouter' }}
+        </button>
+      </form>
     </div>
-    <div>
-      <label class="form-label" for="prix">Prix:</label>
-      <input type="number" id="prix" [(ngModel)]="produit.prix" name="prix" required />
-    </div>
-    <div>
-      <label class="form-label" for="stock">Quantité en stock:</label>
-      <input type="number" id="stock" [(ngModel)]="produit.qteStock" name="qteStock" required />
-    </div>
-
-    <button  class="btn btn-primary" type="submit">{{ produit.id ? 'modifier' : 'Ajouter' }}</button>
-  </form>
-    </div>
+  </div>
 </div>

@@ -24,6 +24,9 @@ const routes: Routes = [
   { path: 'produits', component: ProduitComponent, canActivate: [AuthGuard] },
   { path: 'edit-produit/:id', component: EditProduitComponent, canActivate: [AuthGuard] },
   { path: 'add-produit', component: AddProduitComponent, canActivate: [AuthGuard] },
+  { path: 'ventes', component: VenteComponent, canActivate: [AuthGuard] },
+  { path: 'ventes-add', component: AddEditVenteComponent, canActivate: [AuthGuard] },
+  { path: 'vente-edit/:id', component: AddEditVenteComponent, canActivate: [AuthGuard] },
 
 ];
 
