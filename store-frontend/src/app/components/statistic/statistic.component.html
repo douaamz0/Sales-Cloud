@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <div class="charts">
   <!-- Graphe des produits les plus vendus -->
-  <h3>Produits les plus vendus</h3>
+  <h3 class="text-center my-4">Produits les plus vendus</h3>
   <div *ngIf="topProducts && topProducts.length > 0">
     <ngx-charts-bar-vertical
       [results]="topProducts"
@@ -12,7 +12,7 @@
       [scheme]="'cool'"
     ></ngx-charts-bar-vertical>
   </div>
-  <h3>Clients les plus fidèles</h3>
+  <h3 class="text-center my-4">Clients les plus fidèles</h3>
   <div style="display: block;">
     <ngx-charts-bar-vertical
       [results]="topClients"

@@ -16,7 +16,7 @@
             class="form-control"
             required>
             <option *ngFor="let produit of produits" [ngValue]="produit">
-              {{ produit.id }}
+              {{ produit.nom }}
             </option>
           </select>
         </div>
@@ -31,7 +31,7 @@
             class="form-control"
             required>
             <option *ngFor="let client of clients" [ngValue]="client">
-              {{ client.id }} - {{ client.nom }}
+              {{ client.nom }} - {{ client.prenom }}
             </option>
           </select>
         </div>

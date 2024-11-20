@@ -27,6 +27,7 @@ import { AddProduitComponent } from './components/add-produit/add-produit.compon
 import { EditProduitComponent } from './components/edit-produit/edit-produit.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { StatisticComponent } from './components/statistic/statistic.component';
+import { InvoiceComponent } from './components/invoice/invoice.component';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import { StatisticComponent } from './components/statistic/statistic.component';
     AddProduitComponent,
     EditProduitComponent,
     StatisticComponent,
+    InvoiceComponent,
 
   ],
   imports: [

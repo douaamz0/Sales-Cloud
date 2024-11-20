@@ -1,5 +1,6 @@
 package org.example.salesmanagement.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,5 +35,11 @@ public class Vente {
     private Date date;
 
     private int quantite;
+    @JsonProperty("isInvoiced")
+    private boolean isInvoiced=false;
+
+    public double getTotalPrice() {
+        return produit.getPrix() * quantite;
+    }
 
 }

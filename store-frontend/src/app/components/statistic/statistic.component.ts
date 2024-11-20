@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StatisticService } from '../../services/statistic.service';
-import { Statistique } from '../../models/statistique';  // Importer le modèle
+import { Statistique } from '../../models/statistique';
+import {log} from "@angular-devkit/build-angular/src/builders/ssr-dev-server";  // Importer le modèle
 
 @Component({
   selector: 'app-statistic',
@@ -25,12 +26,13 @@ export class StatisticComponent implements OnInit {
   // Méthodes pour récupérer les statistiques
   loadTopProducts(): void {
     this.statisticService.getTopProducts().subscribe(
-      (data: Statistique[]) => {
-        console.log('Top Products:', data); // Vérifiez les données dans la console
+      (data: any[]) => {
+        console.log('Raw Top Products:', data); // Affichez les données originales pour vérification
         this.topProducts = data.map(item => ({
-          name: item.name, // Le nom de l'élément
-          value: item.value // La valeur numérique associée
+          name: item.productName, // Remappez "productName" en "name"
+          value: item.sales       // Remappez "sales" en "value"
         }));
+        console.log('Formatted Top Products:', this.topProducts); // Vérifiez les données après transformation
       },
       (error) => {
         console.error('Erreur lors du chargement des produits les plus vendus', error);
@@ -40,14 +42,16 @@ export class StatisticComponent implements OnInit {
 
 
 
+
   loadTopClients(): void {
     this.statisticService.getTopClients().subscribe(
       (data: any[]) => {
-        // Reformater les données pour ngx-charts
+        console.log('Raw Top Clients:', data); // Vérifiez les données initiales
         this.topClients = data.map(item => ({
-          name: item.clientName, // Nom du client
-          value: item.purchases  // Nombre d'achats
+          name: item.clientName, // Remappez "clientName" en "name"
+          value: item.purchases  // Remappez "purchases" en "value"
         }));
+        console.log('Formatted Top Clients:', this.topClients); // Vérifiez les données après transformation
       },
       (error) => {
         console.error('Erreur lors du chargement des clients les plus acheteurs', error);

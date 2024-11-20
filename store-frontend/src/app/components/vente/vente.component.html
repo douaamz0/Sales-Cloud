@@ -13,17 +13,20 @@
       <th>Quantité</th>
       <th>Prix unitaire</th>
       <th>prix total</th>
+      <th>facturée</th>
+
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let vente of ventes">
       <td>{{ vente.id }}</td>
-      <td>{{ vente.client.nom}}</td>
+      <td>{{ vente.client.nom}} {{vente.client.prenom}}</td>
       <td>{{ vente.produit.id}}</td>
       <td>{{ vente.date }}</td>
       <td>{{ vente.quantite }}</td>
       <td>{{ vente.produit.prix }}</td>
       <td>{{ vente.quantite*vente.produit.prix }}</td>
+      <td>{{ vente.isInvoiced ? 'Facturée' : 'Non facturée' }}</td>
       <td>
         <button (click)="editVente(vente.id)" class="btn btn-success me-2">
           <i class="bi bi-pen"></i>

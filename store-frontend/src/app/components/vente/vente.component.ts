@@ -23,6 +23,8 @@ export class VenteComponent implements OnInit {
     this.venteService.getVentes().subscribe(
       (data: Vente[]) => {
         this.ventes = data;
+        console.log(this.ventes[0].isInvoiced)
+        console.log(this.ventes[0].quantite)
       },
       error => {
         console.error('Error loading sales', error);

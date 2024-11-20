@@ -1,0 +1,31 @@
+<div *ngIf="noSalesMessage; else invoiceList">
+  <p>{{ noSalesMessage }}</p>
+</div>
+<ng-template #invoiceList>
+<div *ngIf="invoice">
+  <h2 class="text-center my-4">Facture</h2>
+  <p><strong>Client :</strong> {{ invoice.clientName }} {{ invoice.clientPrenom}}</p>
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th>Produit</th>
+      <th>Marque</th>
+      <th>Quantité</th>
+      <th>Prix unitaire</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let sale of invoice.sales">
+      <td>{{ sale.produit.nom }}</td>
+      <td>{{ sale.produit.marque }}</td>
+      <td>{{ sale.quantite }}</td>
+      <td>{{ sale.produit.prix | currency }}</td>
+
+    </tr>
+    </tbody>
+  </table>
+  <h3 class="text-end">Total : {{ invoice.totalAmount | currency }}</h3>
+</div>
+
+  <button (click)="generatePDF()" class="btn btn-success mt-4">Télécharger en PDF</button>
+</ng-template>

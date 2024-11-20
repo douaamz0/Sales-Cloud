@@ -1,15 +1,19 @@
 <mat-toolbar class="custom-toolbar">
   <span class="col-md-6">
-    <span class="site-name">Sales Management</span>
+    <span routerLink="/home" class="site-name">Sales Management</span>
   </span>
   <span style="flex: auto"></span>
 
+  <button mat-button routerLink="/home" class="nav-button">Accueil</button>
   <!-- Bouton "Accueil" -->
   <button mat-button routerLink="/clients" class="nav-button">Clients</button>
 
   <!-- Bouton "Genres" -->
   <button mat-button routerLink="/produits" class="nav-button">Produits</button>
+
   <button mat-button routerLink="/ventes" class="nav-button">Ventes</button>
+
+  <button mat-button routerLink="/register" class="nav-button">Ajouter un Admin</button>
 
   <!-- Afficher l'icône du profil si l'utilisateur est authentifié -->
   <ng-container *ngIf="isAuthenticated(); else loginButton">

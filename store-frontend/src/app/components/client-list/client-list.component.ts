@@ -28,5 +28,9 @@ export class ClientListComponent implements OnInit {
   editClient(id:number):void {
     this.router.navigateByUrl("/edit-client/"+id);
   }
+
+  generateInvoice(id: number) {
+    this.router.navigate(['/invoice', id]);
+  }
 }
 

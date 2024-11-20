@@ -13,6 +13,7 @@ import {ProduitComponent} from "./components/produit/produit.component";
 import {EditProduitComponent} from "./components/edit-produit/edit-produit.component";
 import {AddProduitComponent} from "./components/add-produit/add-produit.component";
 import {StatisticComponent} from "./components/statistic/statistic.component";
+import {InvoiceComponent} from "./components/invoice/invoice.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: 'ventes-add', component: AddEditVenteComponent, canActivate: [AuthGuard] },
   { path: 'vente-edit/:id', component: AddEditVenteComponent, canActivate: [AuthGuard] },
   { path: 'home', component: StatisticComponent ,canActivate: [AuthGuard] },
+  { path: 'invoice/:id', component: InvoiceComponent ,canActivate: [AuthGuard] },
 
 ];
 

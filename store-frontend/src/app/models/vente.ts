@@ -7,5 +7,6 @@ export class Vente {
   produit!: Produit;
   date!: Date;
   quantite!: number;
+  isInvoiced!:boolean;
 
 }

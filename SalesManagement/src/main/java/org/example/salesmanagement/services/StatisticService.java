@@ -34,7 +34,7 @@ public class StatisticService {
     public List<Object> getTopBuyingClients() {
         return venteRepository.findAll().stream()
                 .collect(Collectors.groupingBy(
-                        vente -> vente.getClient().getNom(),
+                        vente -> vente.getClient().getNom()+" "+vente.getClient().getPrenom(),
                         Collectors.summingInt(Vente::getQuantite)
                 ))
                 .entrySet().stream()
