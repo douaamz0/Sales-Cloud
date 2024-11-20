@@ -25,6 +25,8 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import { ProduitComponent } from './components/produit/produit.component';
 import { AddProduitComponent } from './components/add-produit/add-produit.component';
 import { EditProduitComponent } from './components/edit-produit/edit-produit.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { StatisticComponent } from './components/statistic/statistic.component';
 
 
 @NgModule({
@@ -40,7 +42,9 @@ import { EditProduitComponent } from './components/edit-produit/edit-produit.com
     NavbarComponent,
     ProduitComponent,
     AddProduitComponent,
-    EditProduitComponent
+    EditProduitComponent,
+    StatisticComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -58,7 +62,8 @@ import { EditProduitComponent } from './components/edit-produit/edit-produit.com
     MatInput,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgxChartsModule
   ],
   providers: [
 

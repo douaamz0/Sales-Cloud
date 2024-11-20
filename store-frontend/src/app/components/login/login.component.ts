@@ -20,7 +20,7 @@ export class LoginComponent {
           localStorage.setItem('token', token);
         } // Store JWT token
         this.loginError = null; // Clear any previous error
-        this.router.navigate(['/navbar']); // Redirect to home or another page
+        this.router.navigate(['/home']); // Redirect to home or another page
 
       },
       error => {

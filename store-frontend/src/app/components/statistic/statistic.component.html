@@ -1,0 +1,29 @@
+<app-navbar></app-navbar>
+<div class="charts">
+  <!-- Graphe des produits les plus vendus -->
+  <h3>Produits les plus vendus</h3>
+  <div *ngIf="topProducts && topProducts.length > 0">
+    <ngx-charts-bar-vertical
+      [results]="topProducts"
+      [xAxis]="true"
+      [yAxis]="true"
+      [legend]="true"
+      [animations]="true"
+      [scheme]="'cool'"
+    ></ngx-charts-bar-vertical>
+  </div>
+  <h3>Clients les plus fidèles</h3>
+  <div style="display: block;">
+    <ngx-charts-bar-vertical
+      [results]="topClients"
+      [xAxis]="true"
+      [yAxis]="true"
+      [showYAxisLabel]="true"
+      [showXAxisLabel]="true"
+      [xAxisLabel]="'Clients'"
+      [yAxisLabel]="'Achats'"
+    >
+    </ngx-charts-bar-vertical>
+  </div>
+</div>
+
