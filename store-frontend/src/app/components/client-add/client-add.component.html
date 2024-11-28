@@ -58,19 +58,7 @@
             placeholder="Enter client email"
           />
         </div>
-        <!-- Password -->
-        <div class="mb-3">
-          <label for="password" class="form-label">Password:</label>
-          <input
-            type="password"
-            id="password"
-            class="form-control"
-            [(ngModel)]="client.password"
-            name="password"
-            required
-            placeholder="Enter password"
-          />
-        </div>
+
         <!-- Submit Button -->
         <button type="submit" class="btn btn-primary w-100">
           {{ client.id ? 'Update' : 'Add' }}

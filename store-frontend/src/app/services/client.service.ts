@@ -16,6 +16,9 @@ export class ClientService {
   getClients(): Observable<any> {
     return this.http.get(this.baseUrl+"/getClients");
   }
+  searchClientsByName(nom: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/${nom}`);
+  }
 
   // Fetch a single client by ID
   getClient(id: number): Observable<any> {

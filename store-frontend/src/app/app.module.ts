@@ -30,6 +30,7 @@ import { StatisticComponent } from './components/statistic/statistic.component';
 import { InvoiceComponent } from './components/invoice/invoice.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,  // Ajoutez AppComponent ici pour qu'il soit déclaré dans le module
@@ -46,6 +47,7 @@ import { InvoiceComponent } from './components/invoice/invoice.component';
     EditProduitComponent,
     StatisticComponent,
     InvoiceComponent,
+
 
   ],
   imports: [

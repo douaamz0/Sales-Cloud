@@ -33,6 +33,16 @@ public class ClientController {
         }
         return "Client A not available";
     }
+    @GetMapping("/{nom}")
+    public String getClientsByNom(@PathVariable String nom) {
+        List<ServiceInstance> instances = discoveryClient.getInstances("StoreBackend");
+        if (instances != null && !instances.isEmpty()) {
+            String clientAUrl = instances.get(0).getUri().toString() + "/StoreBackend/api/clients/"+nom;
+            return restTemplate.getForObject(clientAUrl, String.class);
+        }
+        return "Client A not available";
+    }
+
     @GetMapping("/getClients/{id}")
     public ResponseEntity<?> getClient(@PathVariable long id) {
         // Récupération des instances du service StoreBackend
@@ -145,6 +155,7 @@ public class ClientController {
         return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE)
                 .body(Map.of("error", "StoreBackend service not available"));
     }
+
 
 
 

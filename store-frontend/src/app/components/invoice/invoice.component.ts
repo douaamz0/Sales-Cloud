@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { InvoiceService } from "../../services/invoice.service";
 import { jsPDF } from "jspdf";
+import {Invoice} from "../../models/Invoice";
+import {Vente} from "../../models/vente";
 
 @Component({
   selector: 'app-invoice',
@@ -9,7 +11,7 @@ import { jsPDF } from "jspdf";
   styleUrls: ['./invoice.component.css']
 })
 export class InvoiceComponent implements OnInit {
-  invoice: any;
+  invoice!: Invoice;
   noSalesMessage: string = '';
 
   constructor(
@@ -38,16 +40,31 @@ export class InvoiceComponent implements OnInit {
   // Fonction pour générer le PDF de la facture
   generatePDF(): void {
     const doc = new jsPDF();
+    const today = new Date();
+
+// Formate la date (par exemple : JJ/MM/AAAA)
+    const formattedDate = today.toLocaleDateString('fr-FR');
 
     // Ajouter un titre
     doc.setFontSize(18);
-    doc.text("Invoice", 20, 20);
+
 
     // Ajouter les détails de la facture
     doc.setFontSize(12);
-    doc.text(`Client: ${this.invoice.clientName}`, 20, 40);
-    doc.text(`Date: ${this.invoice.sales.date}`, 20, 50);
-    doc.text(`Total Amount: ${this.invoice.totalAmount} EUR`, 20, 60);
+    doc.text("Facture", 105, 20, { align: "center" }); // Centrer le titre
+    doc.text(`Client: ${this.invoice.clientName} ${this.invoice.clientPrenom}`, 20, 40);
+    doc.text(`Date: ${formattedDate}`, 20, 50);
+
+// Détails des ventes
+    doc.text("Détails des ventes :", 20, 60);
+    let yPosition = 70; // Position de départ pour les lignes des ventes
+    this.invoice.sales.forEach((sale:Vente) => {
+      doc.text(` Produit: ${sale.produit.nom}, Quantité: ${sale.quantite}, Prix: ${sale.produit.prix} MAD`, 20, yPosition);
+      yPosition += 10; // Espacement entre les lignes
+    });
+
+// Total de la facture
+    doc.text(`Montant total : ${this.invoice.totalAmount} MAD`, 20, yPosition + 10);
 
     // Ajouter d'autres informations de la facture ici...
 

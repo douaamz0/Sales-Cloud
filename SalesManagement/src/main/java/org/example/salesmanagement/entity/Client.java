@@ -29,8 +29,7 @@ public class Client {
     @Column(name = "email", nullable = false, unique = true)  // Ensures email is unique and non-null
     private String email;
 
-    @Column(name = "password", nullable = false)
-    private String password;
+
 
 
 }
