@@ -18,7 +18,7 @@ import {InvoiceComponent} from "./components/invoice/invoice.component";
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'register', component: RegisterComponent },
+  { path: 'register', component: RegisterComponent , canActivate: [AuthGuard]},
   { path: 'navbar', component: NavbarComponent, canActivate: [AuthGuard]},
   { path: 'clients', component: ClientListComponent , canActivate: [AuthGuard]},
   { path: 'add-client', component: ClientAddComponent, canActivate: [AuthGuard] },

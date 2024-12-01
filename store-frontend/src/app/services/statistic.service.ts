@@ -26,4 +26,12 @@ export class StatisticService {
   getTopClients(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/top-clients`);
   }
+
+  getTopStock():Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/top-stock`)
+  }
+
+  getVente():Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/ventes`)
+  }
 }

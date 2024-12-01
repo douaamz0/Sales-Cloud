@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StatisticService } from '../../services/statistic.service';
-import { Statistique } from '../../models/statistique';
-import {log} from "@angular-devkit/build-angular/src/builders/ssr-dev-server";  // Importer le modèle
+import {Produit} from "../../models/produit";
 
 @Component({
   selector: 'app-statistic',
@@ -11,53 +10,80 @@ import {log} from "@angular-devkit/build-angular/src/builders/ssr-dev-server";  
 export class StatisticComponent implements OnInit {
 
   // Déclaration des variables pour stocker les données des graphiques
-  public topProducts: Statistique[] = [];
-  public topClients: Statistique[] = [];
+  public topProducts: { name: string, value: number }[] = [];
+  public uninvoicedSalesCount: number = 0;
+  public topClients: { name: string, value: number }[] = [];
+  public topStockProducts!: Produit ;
 
-  // Initialisation du service
-  constructor(private statisticService: StatisticService) { }
+  constructor(private statisticService: StatisticService) {}
 
   ngOnInit(): void {
-    // Charger les données dès le début
+    // Charger les statistiques au démarrage
     this.loadTopProducts();
+    this.loadUninvoicedSales();
     this.loadTopClients();
+    this.loadTopStock();
+
   }
 
-  // Méthodes pour récupérer les statistiques
+  // Méthode pour récupérer les produits avec le stock le plus élevé
   loadTopProducts(): void {
     this.statisticService.getTopProducts().subscribe(
       (data: any[]) => {
-        console.log('Raw Top Products:', data); // Affichez les données originales pour vérification
         this.topProducts = data.map(item => ({
           name: item.productName, // Remappez "productName" en "name"
           value: item.sales       // Remappez "sales" en "value"
         }));
-        console.log('Formatted Top Products:', this.topProducts); // Vérifiez les données après transformation
+        console.log('Produits les plus stockés:', this.topProducts);
       },
       (error) => {
-        console.error('Erreur lors du chargement des produits les plus vendus', error);
+        console.error('Erreur lors du chargement des produits les plus stockés', error);
       }
     );
   }
 
+  // Méthode pour récupérer le nombre de ventes non facturées
+  loadUninvoicedSales(): void {
+    this.statisticService.getVente().subscribe(
+      (data: number) => {
 
+        this.uninvoicedSalesCount = data;
+        console.log('Nombre de ventes non facturées:', this.uninvoicedSalesCount);
+      },
+      (error) => {
+        console.error('Erreur lors du chargement des ventes non facturées', error);
+      }
+    );
+  }
 
-
+  // Méthode pour récupérer les meilleurs clients
   loadTopClients(): void {
     this.statisticService.getTopClients().subscribe(
       (data: any[]) => {
-        console.log('Raw Top Clients:', data); // Vérifiez les données initiales
         this.topClients = data.map(item => ({
           name: item.clientName, // Remappez "clientName" en "name"
           value: item.purchases  // Remappez "purchases" en "value"
         }));
-        console.log('Formatted Top Clients:', this.topClients); // Vérifiez les données après transformation
+        console.log('Clients les plus fidèles:', this.topClients);
       },
       (error) => {
-        console.error('Erreur lors du chargement des clients les plus acheteurs', error);
+        console.error('Erreur lors du chargement des clients', error);
       }
     );
   }
 
+  // Méthode pour récupérer les produits les plus vendus
 
+
+  private loadTopStock() {
+    this.statisticService.getTopStock().subscribe(
+      (data:Produit)=> {
+        this.topStockProducts=data;
+
+      },
+    (error) => {
+      console.error('Erreur lors du chargement des produits avec le grand stock', error);
+    }
+    )
+  }
 }

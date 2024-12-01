@@ -1,5 +1,6 @@
 package org.example.salesmanagement.controllers;
 
+import org.example.salesmanagement.entity.Produit;
 import org.example.salesmanagement.services.StatisticService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,5 +28,14 @@ public class StatistiqueController {
     @GetMapping("/top-clients")
     public List<Object> getTopBuyingClients() {
         return statistiqueService.getTopBuyingClients();
+    }
+
+    @GetMapping("/top-stock")
+   public Produit getTopStock(){
+        return statistiqueService.getTopStock();
+    }
+    @GetMapping("/ventes")
+    public Long getventes(){
+        return statistiqueService.countUninvoicedSales();
     }
 }
