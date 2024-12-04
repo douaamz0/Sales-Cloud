@@ -34,6 +34,8 @@ export class AddEditVenteComponent implements OnInit {
       this.venteService.getVenteById(Number(id)).subscribe(
         (data: Vente) => {
           this.vente = data;
+          this.vente.produit=data.produit;
+          this.vente.client=data.client;
         },
         error => {
           console.error('Error loading sale', error);

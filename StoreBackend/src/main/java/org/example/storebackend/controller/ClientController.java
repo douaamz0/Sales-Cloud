@@ -25,10 +25,6 @@ public class ClientController {
         return clientService.getClientById(id);
     }
 
-    @GetMapping("/{nom}")
-    public List getClientByNom(@PathVariable String nom){
-        return clientService.getClientByName(nom);
-    }
 
     @PostMapping
     public Client saveClient(@RequestBody Client client) {

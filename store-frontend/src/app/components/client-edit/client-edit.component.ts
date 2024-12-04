@@ -21,6 +21,7 @@ export class ClientEditComponent implements OnInit {
     const id = this.route.snapshot.params['id'];
     this.clientService.getClient(id).subscribe(data => {
       this.client = data;
+      console.log(this.client);
     });
   }
 
