@@ -1,8 +1,8 @@
 /* Styles globaux pour la barre de navigation */
 .custom-toolbar {
-  background-color: #0056b3; /* Bleu foncé pour le fond */
+  background-color: #3f4b91; /* Bleu foncé pour le fond */
   color: #ffffff; /* Couleur blanche pour le texte */
-  padding: 10px 20px;
+  padding: 20px 20px;
   display: flex;
   align-items: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -30,7 +30,7 @@
 
 /* Effet au survol des boutons */
 .nav-button:hover {
-  background-color: #004494; /* Bleu légèrement plus foncé */
+  background-color: #7593c7; /* Bleu légèrement plus foncé */
   color: #e3f2fd; /* Bleu clair pour le texte */
 }
 

@@ -1,11 +1,11 @@
 <app-navbar></app-navbar>
-<div class="client-list-card">
-    <h2>Liste des Clients</h2>
-    <button class="btn btn-primary" routerLink="/add-client">Ajouter un client</button>
+<div class="client-list-card" >
+    <h1 style="align-items: center; display: flex">Liste des Clients</h1>
+    <button class="btn"  style="background-color: #3f4b91;color:white" routerLink="/add-client">Ajouter un client</button>
 
     <table class="client-table">
-      <thead>
-        <tr>
+      <thead >
+        <tr >
           <th>Nom</th>
           <th>Prénom</th>
           <th>Téléphone</th>
@@ -20,15 +20,17 @@
           <td>{{ client.tel }}</td>
           <td>{{ client.email }}</td>
           <td>
-            <button (click)="editClient(client.id)" class="btn btn-success me-2">
+            <button (click)="editClient(client.id)" class="btn btn-success me-2" >
               <i class="bi bi-pen"></i>
             </button>
 
-          <button (click)="deleteClient(client.id)" class="btn btn-danger me-2">
+          <button (click)="deleteClient(client.id)" class="btn btn-danger me-2" >
             <i class="bi bi-trash"></i>
           </button>
 
-            <button class="btn btn-primary me-2" (click)="generateInvoice(client.id)">Générer la facture</button>
+            <button class="btn me-2" style="background-color: #3f4b91" (click)="generateInvoice(client.id)">
+              <i class="bi bi-receipt"></i>
+            </button>
 
 
           </td>

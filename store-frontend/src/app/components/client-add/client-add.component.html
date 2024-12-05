@@ -1,8 +1,8 @@
 <app-navbar></app-navbar>
 <div class="container">
   <div class="card shadow-sm mt-4" style="max-width: 600px; margin: auto;">
-    <div class="card-header bg-primary text-white text-center">
-      <h3>{{ client.id ? 'Update Client' : 'Add New Client' }}</h3>
+    <div class="card-header text-white text-center" style="background-color: #3f4b91">
+      <h3>{{ client.id ? 'Modifier un client' : 'Ajouter un nouveau Client' }}</h3>
     </div>
     <div class="card-body">
       <form (ngSubmit)="addClient()">
@@ -60,8 +60,8 @@
         </div>
 
         <!-- Submit Button -->
-        <button type="submit" class="btn btn-primary w-100">
-          {{ client.id ? 'Update' : 'Add' }}
+        <button type="submit" class="btn w-100" style="background-color: #3f4b91; color:white">
+          {{ client.id ? 'Modifier' : 'Ajouter' }}
         </button>
       </form>
     </div>

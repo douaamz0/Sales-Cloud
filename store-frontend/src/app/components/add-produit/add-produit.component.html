@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <div class="container mt-5">
   <div class="card mx-auto" style="max-width: 500px;">
-    <div class="card-header bg-primary text-white text-center">
+    <div class="card-header  text-white text-center" style="background-color: #3f4b91;">
       <h4>{{ produit.id ? 'Modifier le produit' : 'Ajouter un produit' }}</h4>
     </div>
     <div class="card-body">
@@ -59,7 +59,7 @@
           />
         </div>
         <!-- Submit Button -->
-        <button type="submit" class="btn btn-primary w-100">
+        <button type="submit" class="btn  w-100" style="background-color: #3f4b91; color:white">
           {{ produit.id ? 'Modifier' : 'Ajouter' }}
         </button>
       </form>
